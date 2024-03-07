@@ -1,21 +1,19 @@
 import os
-from dotenv import load_dotenv
-
-from langchain_community.chat_models import ChatOllama
-from langchain_community.embeddings import OllamaEmbeddings
 import config
-load_dotenv()
+
+from langchain_openai import ChatOpenAI
+from langchain_openai import OpenAIEmbeddings
 
 
-MODEL = config.MODEL
-OLLAMA_BASE_URL = config.OLLAMA_BASE_URL
-
+OPENAI_API_KEY = config.OPENAI_API_KEY
 
 def get_llm():
-    llm = ChatOllama(base_url=OLLAMA_BASE_URL, model=MODEL)
+    llm = ChatOpenAI()
 
     return llm
 
 def get_embeddings():
     
-    ollama_embeddings = OllamaEmbeddings(base_url=OLLAMA_BASE_URL, model=MODEL)
+    openai_embeddings = OpenAIEmbeddings()
+
+    return openai_embeddings
